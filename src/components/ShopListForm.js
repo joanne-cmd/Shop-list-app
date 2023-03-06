@@ -11,7 +11,7 @@ const ShopListForm = () => {
   const additem = async (data) => {
     if (data !== null) {
       try {
-        const response = await fetch(`http://127.0.0.1:9292/fetch_items`, {
+        const response = await fetch(`http://127.0.0.1:9292/create/`, {
           method: 'POST',
           body: JSON.stringify({ content: data }),
           headers: { 'Content-Type': 'application/json' }

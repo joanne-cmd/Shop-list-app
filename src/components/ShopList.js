@@ -1,4 +1,4 @@
-import {  useContext } from 'react'
+import {  useEffect, useContext } from 'react'
 import MainContext from '../MainContext'
 
 
@@ -7,15 +7,21 @@ const ShopList = () => {
   const { items, setItems } = useContext(MainContext)
   const { setUpdate } = useContext(MainContext)
 
-  const getLists = async () => {
-    try {
-      const response = await fetch('http://127.0.0.1:9292/');
-      const responseData = await response.json();
-      setItems(responseData.reverse());
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  const getLists = 
+  
+    useEffect(() => {
+      const getLists = async () => {
+        try {
+          const response = await fetch('http://127.0.0.1:9292/');
+          const responseData = await response.json();
+          setItems(responseData.reverse());
+        } catch (error) {
+          console.log(error);
+        }
+      };
+  
+      getLists();
+    }, []);
 
   const completeitem = async (id) => {
     try {
